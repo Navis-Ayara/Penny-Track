@@ -18,6 +18,7 @@ class PennyTracker:
         "transportation",
         "groceries",
     ]
+    categories.append("New category")
 
     @staticmethod
     def clear_terminal():
@@ -29,7 +30,6 @@ class PennyTracker:
 
     @classmethod
     def select_category(cls):
-        cls.categories.append("new category")
         question = [
             inquirer.List(
                 "option",
@@ -45,38 +45,64 @@ class PennyTracker:
                 return category_name
             else:
                 return answer["option"]
+            
+    @classmethod
+    def get_amount(cls):
+        question = [
+            inquirer.Text(
+                "amount",
+                message="Enter the amount",
+                validate=lambda _, x: x.isdigit() or x == "",
+                default="1"
+            )
+        ]
 
+        answer = inquirer.prompt(question)
+        if answer and answer["amount"] != "0":
+            try:
+                amount = float(answer["amount"])
+                return amount
+            except ValueError:
+                print("Invalid amount. Please enter a number.")
+                cls.get_amount()
+        else:
+            print("Amount cannot be zero.")
+            cls.get_amount()
+        
     @classmethod
     def start(cls):
         while True:
+            cls.show_panel()
             choice = input("> ")
 
             match choice:
                 case "add":
-                    PennyTracker.clear_terminal()
+                    cls.clear_terminal()
                     category = cls.select_category()
-                    amount = int(input("Amount: "))
-                    PennyTracker.clear_terminal()
+                    amount = cls.get_amount()
+                    cls.clear_terminal()
                     print("Records have been updated successfully!")
-                    PennyTracker.show_panel()
                 case "view":
-                    pass
+                    cls.clear_terminal()
+                    print("View records")
                 case "report":
-                    pass
+                    cls.clear_terminal()
                 case "exit":
-                    PennyTracker.clear_terminal()
+                    cls.clear_terminal()
                     print("Exiting PennyTracker now")
                     sleep(2)
                     break
                 case "analytics":
-                    pass
+                    cls.clear_terminal()
+                    print("Analytics")
+                case "help":
+                    cls.clear_terminal()
+                    print("Help")
                 case _:
                     print(f"'{choice}' is an unknown option")
 
 def main():
     PennyTracker.clear_terminal()
-    PennyTracker.show_panel()
-
     PennyTracker.start()
 
 if __name__ == "__main__":
