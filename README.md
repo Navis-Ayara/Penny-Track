@@ -29,3 +29,8 @@ No installation needed really. Simply:
     ```bash
     uv run main.py
     ```
+
+# TODO:
+
+1. Analytics graph
+2. PDF report generation

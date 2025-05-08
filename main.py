@@ -102,6 +102,9 @@ class PennyTracker:
                 return category_name
             else:
                 return answer["option"]
+        else:
+            cls.clear_terminal()
+            cls.select_category()
     
     @classmethod
     def add_category(cls, category_name :str):
@@ -134,7 +137,7 @@ class PennyTracker:
                 print("Invalid amount. Please enter a number.")
                 cls.get_amount()
         else:
-            print("Amount cannot be zero.")
+            cls.clear_terminal()
             cls.get_amount()
 
     @classmethod
