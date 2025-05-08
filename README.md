@@ -12,25 +12,32 @@ It was a fun project to work on. Hopefully one day I'll get to work on something
 ## Installation
 
 No installation needed really. Simply:
+
 1. Clone the repository:
+
     ```bash
     git clone https://github.com/Navis-Ayara/penny_track.git
     ```
+
 2. Navigate to the project directory:
+
     ```bash
     cd penny_track
     ```
+
 3. Install dependencies using `uv`:
+
     ```bash
     uv install
     ```
 
-4.  Start the application:
+4. Start the application:
+
     ```bash
     uv run main.py
     ```
 
-# TODO:
+## TODO
 
 1. Analytics graph
 2. PDF report generation
