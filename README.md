@@ -1,15 +1,17 @@
 # Penny Track
 
 Penny Track is a simple application designed to help users track their expenses and manage their budget effectively.
+It was a fun project to work on. Hopefully one day I'll get to work on something people will rely on every day
 
 ## Features
 
 - Add, edit, and delete expense entries.
 - Categorize expenses for better organization.
-- View summary reports of your spending habits.
+- View summary reports of your spending habits. I used Rich to get formatting, input customization and tables working in the terminal for that extra layer of user-friendliness.
 
 ## Installation
 
+No installation needed really. Simply:
 1. Clone the repository:
     ```bash
     git clone https://github.com/Navis-Ayara/penny_track.git
@@ -23,9 +25,7 @@ Penny Track is a simple application designed to help users track their expenses 
     uv install
     ```
 
-## Usage
-
-1. Start the application:
+4.  Start the application:
     ```bash
-    uv run
+    uv run main.py
     ```
