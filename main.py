@@ -1,6 +1,7 @@
 import json
 import os
 from time import sleep
+from collections import defaultdict
 from datetime import datetime
 
 import rich.panel
@@ -57,18 +58,27 @@ class PennyTracker:
                     """
                     Since it's just a practice project, the plot shows all entries over time
                     """
-                    plt.figure(figsize=(8, 6))
-                    for data in get_entries():
-                        plt.plot(
-                            datetime.strptime(data["date"], "%Y-%m-%d"), 
-                            float(data["amount"]), 
-                            label=data["category"], 
-                            color="blue", linestyle="-"
-                        )
+                    grouped_data = defaultdict(list)
+                    for entry in get_entries():
+                        category = entry["category"]
+                        date = datetime.strptime(entry["date"], "%Y-%m-%d")
+                        amount = float(entry["amount"])
+                        grouped_data[category].append((date, amount))
+
+                    # Plot each category
+                    plt.figure(figsize=(10, 6))
+                    for category, data in grouped_data.items():
+                        # Sort data by date
+                        data.sort(key=lambda x: x[0])
+                        dates, amounts = zip(*data)
+                        plt.plot(dates, amounts, label=category)
+
+                    # Add labels, title, and legend
                     plt.xlabel("Date")
                     plt.ylabel("Amount")
-                    plt.title("Your spending over time", pad=20)
+                    plt.title("Spending Over Time by Category")
                     plt.legend()
+                    plt.grid(True)
                     plt.show()
                     cls.clear_terminal()
                 case _:

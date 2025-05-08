@@ -39,5 +39,5 @@ No installation needed really. Simply:
 
 ## TODO
 
-1. Analytics graph
+1. Analytics graph [x]
 2. PDF report generation
