@@ -1,7 +1,6 @@
 # Penny Track
 
 Penny Track is a simple application designed to help users track their expenses and manage their budget effectively.
-It was a fun project to work on. Hopefully one day I'll get to work on something people will rely on every day
 
 ## Features
 
